@@ -51,13 +51,13 @@ internal static class SilklessSerialization
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
         }
     }
     
     public static T Deserialize<T>(BinaryReader br) => (T)Deserialize(br, typeof(T));
     
-    private static object Deserialize(BinaryReader br, Type t) {
+    public static object Deserialize(BinaryReader br, Type t) {
         try
         {
             if (t == typeof(int)) return br.ReadInt32();
@@ -74,6 +74,7 @@ internal static class SilklessSerialization
             {
                 int length = br.ReadInt32();
                 Type t2 = t.GetElementType();
+                
                 // ReSharper disable once AssignNullToNotNullAttribute
                 Array array = Array.CreateInstance(t2, length);
                 for (int i = 0; i < length; i++) array.SetValue(Deserialize(br, t2), i);
@@ -91,7 +92,7 @@ internal static class SilklessSerialization
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return null;
         }
     }

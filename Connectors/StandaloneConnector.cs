@@ -46,7 +46,7 @@ internal class StandaloneConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
@@ -76,7 +76,7 @@ internal class StandaloneConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
 
             Disconnect();
 
@@ -104,7 +104,7 @@ internal class StandaloneConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
@@ -119,7 +119,7 @@ internal class StandaloneConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
         }
     }
 
@@ -143,7 +143,7 @@ internal class StandaloneConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
@@ -174,7 +174,7 @@ internal class StandaloneConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             Disconnect();
         }
     }
@@ -208,7 +208,7 @@ internal class StandaloneConnector : Connector
                     // ReSharper disable once MergeIntoNegatedPattern
                     if (e.InnerException is not SocketException sockEx || sockEx.SocketErrorCode != SocketError.TimedOut)
                     {
-                        LogUtil.LogError(e.ToString());
+                        LogUtil.LogError(e);
                         return null;
                     }
                 }
@@ -218,7 +218,7 @@ internal class StandaloneConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return null;
         }
     }

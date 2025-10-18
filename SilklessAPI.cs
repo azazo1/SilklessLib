@@ -73,7 +73,7 @@ public static class SilklessAPI
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
@@ -105,7 +105,7 @@ public static class SilklessAPI
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
@@ -141,7 +141,7 @@ public static class SilklessAPI
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
@@ -180,7 +180,7 @@ public static class SilklessAPI
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
         }
     }
 
@@ -204,7 +204,7 @@ public static class SilklessAPI
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
@@ -230,7 +230,7 @@ public static class SilklessAPI
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
@@ -255,7 +255,7 @@ public static class SilklessAPI
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
@@ -300,7 +300,7 @@ public static class SilklessAPI
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
         }
     }
 
@@ -327,7 +327,7 @@ public static class SilklessAPI
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return null;
         }
     }
@@ -353,26 +353,14 @@ public static class SilklessAPI
             int idLen = br.ReadInt32();
             string id = Encoding.UTF8.GetString(br.ReadBytes(idLen));
             packet.ID = id;
-
-            FieldInfo[] specificFields = type.GetFields();
-            foreach (FieldInfo field in specificFields)
-            {
-                if (field.FieldType == typeof(int)) field.SetValue(packet, br.ReadInt32());
-                if (field.FieldType == typeof(float)) field.SetValue(packet, br.ReadSingle());
-                if (field.FieldType == typeof(bool)) field.SetValue(packet, br.ReadByte() != 0);
-                if (field.FieldType == typeof(string))
-                {
-                    int len = br.ReadInt32();
-                    string s = Encoding.UTF8.GetString(br.ReadBytes(len));
-                    field.SetValue(packet, s);
-                }
-            }
+            
+            foreach (FieldInfo field in type.GetFields()) field.SetValue(packet, SilklessSerialization.Deserialize(br, field.FieldType));
 
             return packet;
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return null;
         }
     }

@@ -24,7 +24,8 @@ public static class LogUtil
         if (!SilklessConfig.PrintDebugOutput) return;
 
         string caller = new StackTrace().GetFrame(1)?.GetMethod()?.DeclaringType?.Name ?? "unknown";
-        string s = $"[DEBUG] {caller}:  {message}";
+        string method = new StackTrace().GetFrame(1)?.GetMethod()?.Name ?? "unknown";
+        string s = $"[DEBUG] {caller}/{method}:  {message}";
 
         ConsoleLogger?.LogInfo(s);
             
@@ -37,7 +38,8 @@ public static class LogUtil
     public static void LogInfo(string message, bool popup = false)
     {
         string caller = new StackTrace().GetFrame(1)?.GetMethod()?.DeclaringType?.Name ?? "unknown";
-        string s = $"[INFO] {caller}:  {message}";
+        string method = new StackTrace().GetFrame(1)?.GetMethod()?.Name ?? "unknown";
+        string s = $"[INFO] {caller}/{method}:  {message}";
 
         ConsoleLogger?.LogInfo(s);
             
@@ -60,4 +62,6 @@ public static class LogUtil
         if (popup) OnPopup?.Invoke(s);
         if (popup) OnPopupError?.Invoke(s);
     }
+
+    public static void LogError(Exception e, bool popup = true) => LogError(e.ToString(), popup);
 }

@@ -56,7 +56,7 @@ internal class SteamConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
@@ -83,7 +83,7 @@ internal class SteamConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
@@ -140,7 +140,7 @@ internal class SteamConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
         }
     }
 
@@ -157,7 +157,7 @@ internal class SteamConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
@@ -178,7 +178,7 @@ internal class SteamConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
         }
     }
 
@@ -198,7 +198,7 @@ internal class SteamConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
         }
     }
 }

@@ -18,7 +18,7 @@ internal class DebugConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
@@ -33,7 +33,7 @@ internal class DebugConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
@@ -55,7 +55,7 @@ internal class DebugConnector : Connector
         }
         catch (Exception e)
         {
-            LogUtil.LogError(e.ToString());
+            LogUtil.LogError(e);
             return false;
         }
     }
