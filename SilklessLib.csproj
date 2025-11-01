@@ -29,13 +29,13 @@
             <HintPath>$(SILKSONG_PATH)/Hollow Knight Silksong_Data/Managed/com.rlabrecque.steamworks.net.dll</HintPath>
         </Reference>
     </ItemGroup>
-  
+
 	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
 		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
 	</ItemGroup>
-    
-<!--    <Target Name="MoveFiles" AfterTargets="Build">-->
-<!--        <Exec Command="copy &quot;$(OutputPath)SilklessLib.dll&quot; &quot;$(SILKSONG_PATH)/BepInEx/plugins&quot;" />-->
+
+    <Target Name="MoveFiles" AfterTargets="Build">
+        <Exec Command="copy &quot;$(OutputPath)SilklessLib.dll&quot; &quot;$(SILKSONG_PATH)/BepInEx/plugins&quot;" />
 <!--        <Exec Command="copy &quot;$(OutputPath)SilklessLib.dll&quot; &quot;$(SILKLESS_OUTPUT)/BepInEx/plugins&quot;" />-->
-<!--    </Target>-->
+    </Target>
 </Project>
