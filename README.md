@@ -6,6 +6,14 @@ Requires [BepInEx 5.4.23.4](https://github.com/BepInEx/BepInEx/releases/tag/v5.4
 
 View the Nexusmods page [here]().
 
+## 编译前
+
+```shell
+cp SilksongPath.props.example SilksongPath.props
+```
+
+编辑其中的路径为 Silksong 游戏路径.
+
 ## Featured mods
 
 - [SilklessCoopVisual](https://www.nexusmods.com/hollowknightsilksong/mods/73) by nek5 (me)
